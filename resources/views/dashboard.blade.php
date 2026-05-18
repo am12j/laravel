@@ -1,290 +1,162 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Dashboard</title>
-
-    <style>
-
-        body{
-
-            margin:0;
-            font-family:Arial, sans-serif;
-            background:linear-gradient(to right,#dfe9f3,#ffffff);
-
-        }
-
-        .navbar{
-
-            background:#111;
-            padding:20px;
-            text-align:center;
-            box-shadow:0px 2px 10px rgba(0,0,0,0.3);
-
-        }
-
-        .navbar a{
-
-            color:white;
-            text-decoration:none;
-            margin:25px;
-            font-size:19px;
-            transition:0.3s;
-            font-weight:bold;
-
-        }
-
-        .navbar a:hover{
-
-            color:orange;
-
-        }
-
-        .main{
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            padding:30px;
-
-        }
-
-        .chatbox{
-
-            width:520px;
-            background:white;
-            padding:30px;
-            border-radius:20px;
-            box-shadow:0px 5px 20px rgba(0,0,0,0.2);
-            text-align:center;
-
-        }
-
-        .chatbox h1{
-
-            color:#222;
-            margin-bottom:10px;
-
-        }
-
-        .chatbox p{
-
-            color:gray;
-            margin-bottom:20px;
-            line-height:25px;
-
-        }
-
-        .messages{
-
-            background:#f7f7f7;
-            border-radius:12px;
-            padding:15px;
-            max-height:180px;
-            overflow-y:auto;
-            margin-bottom:20px;
-            text-align:left;
-
-        }
-
-        .user-msg{
-
-            background:#d1ecf1;
-            padding:12px;
-            border-radius:10px;
-            margin-bottom:12px;
-            box-shadow:0px 2px 5px rgba(0,0,0,0.1);
-
-        }
-
-        .bot-msg{
-
-            background:#ececec;
-            padding:12px;
-            border-radius:10px;
-            margin-bottom:12px;
-            box-shadow:0px 2px 5px rgba(0,0,0,0.1);
-
-        }
-
-        form{
-
-            margin-top:15px;
-
-        }
-
-        input{
-
-            width:85%;
-            padding:14px;
-            border:1px solid #bbb;
-            border-radius:10px;
-            outline:none;
-            font-size:16px;
-            transition:0.3s;
-
-        }
-
-        input:focus{
-
-            border-color:orange;
-            box-shadow:0px 0px 8px rgba(255,165,0,0.5);
-
-        }
-
-        button{
-
-            margin-top:18px;
-            padding:12px 30px;
-            background:orange;
-            border:none;
-            color:white;
-            font-size:17px;
-            border-radius:10px;
-            cursor:pointer;
-            transition:0.3s;
-            font-weight:bold;
-
-        }
-
-        button:hover{
-
-            background:darkorange;
-            transform:scale(1.03);
-
-        }
-
-        .footer{
-
-            background:#111;
-            padding:25px;
-            display:flex;
-            justify-content:center;
-            gap:20px;
-            flex-wrap:wrap;
-
-        }
-
-        .footer img{
-
-            width:180px;
-            height:120px;
-            object-fit:cover;
-            border-radius:12px;
-            transition:0.3s;
-            box-shadow:0px 3px 10px rgba(0,0,0,0.3);
-
-        }
-
-        .footer img:hover{
-
-            transform:scale(1.06);
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rescue Management System</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
-
 <body>
-
     <div class="navbar">
-
         <a href="/dashboard">Home</a>
         <a href="/tracking">Tracking</a>
+        <a href="/logout">Logout</a>
         <a href="/au">About Us</a>
-
     </div>
 
-    <div class="main">
+    <div class="center-content" style="flex-direction: column; max-width: 1000px; margin: 0 auto; width: 100%; align-items: stretch; padding: 2rem;">
+        
+        <!-- Welcome Header -->
+        <div class="glass-panel" style="width: 100%; max-width: 100%; margin-bottom: 2rem; text-align: left; padding: 2rem;">
+            <h1 style="margin-bottom: 0.5rem; font-size: 2.2rem;">Welcome to the Dashboard</h1>
+            <p style="margin-bottom: 0; font-size: 1.1rem;">Central command for managing rescue operations, tracking emergencies, and accessing intelligent assistance.</p>
+        </div>
 
-        <div class="chatbox">
-
-            <h1>Disaster Help Chatbot</h1>
-
-            <p>
-                Ask for precautions, rescue help,
-                emergency numbers, and disaster guidance.
-            </p>
-
-            <div class="messages">
-
-                @if(isset($message))
-
-                    <div class="user-msg">
-
-                        <b>You:</b><br><br>
-
-                        {{ $message }}
-
-                    </div>
-
-                @endif
-
-                @if(isset($answer))
-
-                    <div class="bot-msg">
-
-                        <b>Bot:</b><br><br>
-
-                        {{ $answer }}
-
-                    </div>
-
-                @endif
-
+        <!-- Quick Actions Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; margin-bottom: 1.5rem;">
+            
+            <div class="glass-panel" style="padding: 1.5rem; text-align: center; max-width: 100%;">
+                <h3 style="color: var(--text-light); margin-bottom: 0.5rem; font-style: normal; font-weight: 600;">Report Emergency</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Quickly log a new incident requiring immediate action.</p>
+                <a href="/rc" class="btn-primary" style="padding: 0.6rem 1.2rem; width: auto; font-size: 0.9rem;">Register Complaint</a>
             </div>
 
-            <form action="/help" method="POST">
+            <div class="glass-panel" style="padding: 1.5rem; text-align: center; max-width: 100%;">
+                <h3 style="color: var(--text-light); margin-bottom: 0.5rem; font-style: normal; font-weight: 600;">Track Operations</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Monitor the live status and updates of your active complaints.</p>
+                <a href="/tracking" class="btn-secondary" style="padding: 0.6rem 1.2rem; width: auto; font-size: 0.9rem;">View Tracking</a>
+            </div>
 
-                @csrf
+        </div>
 
-                <input
-                    type="text"
-                    name="message"
-                    placeholder="Type the help you need..."
-                    required
-                >
+        <!-- Lower Section: Chatbot & Chart -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%;">
+            
+            <!-- Chatbot Section (Left) -->
+            <div class="glass-panel" style="width: 100%; max-width: 100%; text-align: left; padding: 2rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-light);">Disaster Help AI Chatbot</h2>
+                <p style="margin-bottom: 1.5rem; font-size: 0.9rem;">Ask for precautions, rescue help, emergency numbers, and disaster guidance.</p>
 
-                <br>
+                <div class="chat-container" style="max-height: 250px;">
+                    @if(isset($message))
+                        <div class="chat-msg msg-user">
+                            <b>You:</b>
+                            {{ $message }}
+                        </div>
+                    @endif
+                    
+                    @if(isset($answer))
+                        <div class="chat-msg msg-bot">
+                            <b>System:</b>
+                            {{ $answer }}
+                        </div>
+                    @endif
+                </div>
 
-                <button type="submit">
+                <form action="/help" method="POST" autocomplete="off">
+                    @csrf
+                    <div class="chat-input-group">
+                        <input type="text" name="message" placeholder="Type the help you need..." required autocomplete="off">
+                        <button type="submit" class="btn-primary" style="margin-top:0; padding: 0 2rem;">Send</button>
+                    </div>
+                </form>
+            </div>
 
-                    Send
-
-                </button>
-
-            </form>
-
-            <br>
-
-            <a href="/rc">
-
-                <button type="button">
-
-                    Click To Register Complaint
-
-                </button>
-
-            </a>
+            <!-- Chart Section (Right) -->
+            <div class="glass-panel" style="width: 100%; max-width: 100%; text-align: left; padding: 2rem;">
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-light);">Incidents (Past Year)</h2>
+                <p style="margin-bottom: 1.5rem; font-size: 0.9rem;">Monthly breakdown of reported natural calamities.</p>
+                <div style="position: relative; height: 280px; width: 100%;">
+                    <canvas id="incidentsChart"></canvas>
+                </div>
+            </div>
 
         </div>
 
     </div>
 
     <div class="footer">
-
-        <img src="flood.png" alt="Flood">
-
-        <img src="cyclone.png" alt="Cyclone">
-
-        <img src="fire.png" alt="Fire">
-
-        <img src="earthquake.png" alt="Earthquake">
-
+        <img src="{{ asset('flood.png') }}" alt="Flood">
+        <img src="{{ asset('cyclone.png') }}" alt="Cyclone">
+        <img src="{{ asset('fire.png') }}" alt="Fire">
+        <img src="{{ asset('earthquake.png') }}" alt="Earthquake">
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('incidentsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [
+                        {
+                            label: 'Flood',
+                            data: [12, 19, 3, 5, 2, 3, 20, 30, 15, 5, 2, 8],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Fire',
+                            data: [5, 2, 10, 15, 25, 30, 10, 5, 2, 8, 12, 5],
+                            backgroundColor: 'rgba(249, 115, 22, 0.7)',
+                            borderColor: 'rgba(249, 115, 22, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Cyclone',
+                            data: [2, 1, 5, 20, 15, 8, 4, 12, 18, 6, 2, 1],
+                            backgroundColor: 'rgba(6, 182, 212, 0.7)',
+                            borderColor: 'rgba(6, 182, 212, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Earthquake',
+                            data: [0, 1, 0, 2, 0, 0, 1, 0, 3, 1, 0, 0],
+                            backgroundColor: 'rgba(217, 119, 6, 0.7)',
+                            borderColor: 'rgba(217, 119, 6, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#cbd5e1' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#cbd5e1' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#f8fafc', font: { family: 'Inter', size: 12 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>

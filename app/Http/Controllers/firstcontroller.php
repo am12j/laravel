@@ -36,14 +36,17 @@ class firstcontroller extends Controller
     }
     public function trackingsearch(Request $request)
     {   
-         $data = complain::where('name', $request->name)->get();
+         $data = complain::where('name', $request->name)
+                         ->where('email', $request->email)
+                         ->get();
         return view('trackingresult', compact('data'));
     }
     public function help(Request $request)
     {
 
         $message = $request->message;
-        $apiKey = env('GEMINI_API_KEY');
+
+        $apiKey = "AIzaSyAVqIIR-22a55CRBwd084YjABKpYxPMzj0";
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=".$apiKey;
         $prompt = "
 

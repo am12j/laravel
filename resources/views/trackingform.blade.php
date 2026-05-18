@@ -1,121 +1,34 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-    <title>Tracking</title>
-
-    <style>
-
-        body{
-
-            margin:0;
-            font-family:Arial, sans-serif;
-            background:linear-gradient(to right, #74ebd5, #ACB6E5);
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-
-        }
-
-        .tracking-box{
-
-            width:450px;
-            background:white;
-            padding:40px;
-            border-radius:15px;
-            box-shadow:0px 0px 20px rgba(0,0,0,0.2);
-            text-align:center;
-
-        }
-
-        .tracking-box h1{
-
-            margin-bottom:15px;
-            color:#333;
-
-        }
-
-        .tracking-box p{
-
-            color:gray;
-            margin-bottom:25px;
-
-        }
-
-        input{
-
-            width:100%;
-            padding:14px;
-            border:1px solid #ccc;
-            border-radius:8px;
-            font-size:16px;
-            box-sizing:border-box;
-            outline:none;
-
-        }
-
-        input:focus{
-
-            border-color:#007bff;
-
-        }
-
-        button{
-
-            width:100%;
-            margin-top:20px;
-            padding:14px;
-            border:none;
-            background:#007bff;
-            color:white;
-            font-size:18px;
-            border-radius:8px;
-            cursor:pointer;
-            transition:0.3s;
-
-        }
-
-        button:hover{
-
-            background:#0056b3;
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking - Rescue Management System</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
-
 <body>
-
-    <div class="tracking-box">
-
-        <h1>Track Complaint</h1>
-
-        <p>
-            Enter your name to check complaint status
-        </p>
-
-        <form action="/trackingsearch" method="POST">
-
-            @csrf
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Enter Your Name"
-                required
-            >
-
-            <button type="submit">
-                Track Now
-            </button>
-
-        </form>
-
+    <div class="navbar">
+        <a href="/dashboard">Home</a>
+        <a href="/tracking">Tracking</a>
+        <a href="/au">About Us</a>
     </div>
 
-</body>
+    <div class="center-content">
+        <div class="glass-panel">
+            <h1>Track Complaint</h1>
+            <p>Enter your name to check the current status of your complaint</p>
 
+            <form action="/trackingsearch" method="POST" autocomplete="off">
+                @csrf
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Enter Your Name" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Enter Your Email" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn-primary btn-block">Track Now</button>
+            </form>
+        </div>
+    </div>
+</body>
 </html>

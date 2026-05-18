@@ -28,3 +28,7 @@ Route::get('/tracking', function () {
 });
 Route::post('/trackingsearch', [firstcontroller::class, 'trackingsearch']);
 Route::post('/help', [firstcontroller::class, 'help']);
+
+Route::get('/logout', function () {
+    return redirect('/login');
+});
