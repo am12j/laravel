@@ -46,7 +46,7 @@ class firstcontroller extends Controller
 
         $message = $request->message;
 
-        $apiKey = "AIzaSyAVqIIR-22a55CRBwd084YjABKpYxPMzj0";
+        $apiKey = env('GEMINI_API_KEY');
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=".$apiKey;
         $prompt = "
 
