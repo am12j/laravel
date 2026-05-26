@@ -26,7 +26,7 @@
             </p>
 
             <p style="font-size: 1.1rem; color: #f1f5f9; margin-bottom: 0;">
-                The system is developed by Aman Khan as an academic project using Laravel, HTML, CSS, and database connectivity concepts to create a simple and user-friendly interface.
+                The system is developed by Md Aman Khan as an academic project using Laravel, HTML, CSS, and database connectivity concepts to create a simple and user-friendly interface.
             </p>
         </div>
     </div>
