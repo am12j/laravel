@@ -24,7 +24,7 @@ pipeline {
 
                 sh 'docker rm check-container || true'
 
-                sh 'docker run -d --name check-container -p 5000:5000 mdamankhan/check'
+                sh 'docker run -d --name check-container -p 5001:5000 mdamankhan/check'
 
             }
 
