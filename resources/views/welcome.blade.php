@@ -10,7 +10,7 @@
     <div class="center-content">
         <div class="glass-panel">
             <img src="{{ asset('images/hero.png') }}" alt="Rescue Hero" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem;">
-            <h1>RESCUE MANAGEMENT SYSTEM AMAN</h1>
+            <h1>RESCUE MANAGEMENT SYSTEM </h1>
             <h3>“Saving lives is not just a responsibility, it is humanity in action.”</h3>
             <p>
                 Welcome to the advanced Rescue Management System.
