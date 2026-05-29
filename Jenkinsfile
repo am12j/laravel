@@ -31,7 +31,7 @@ pipeline {
                 sh 'docker exec check-container cp .env.example .env'
 
                 // 3. Configure the settings inside the .env file
-                sh 'docker exec check-container sed -i "s/APP_KEY=/APP_KEY=base64:jW9uLzN4QkZ5M1c4bDRzN3A2eDlvMnZhNWRlZg==/g" .env'
+                sh 'docker exec check-container sed -i "s/APP_KEY=/APP_KEY=base64:UdMocEgNKNsyl29F7ehTBmqXHlQ6F5HKQS42a8iIu6w=/g" .env'
                 sh 'docker exec check-container sed -i "s/SESSION_DRIVER=database/SESSION_DRIVER=cookie/g" .env'
                 sh 'docker exec check-container sed -i "s/CACHE_STORE=database/CACHE_STORE=file/g" .env'
                 sh 'docker exec check-container sed -i "s/QUEUE_CONNECTION=database/QUEUE_CONNECTION=sync/g" .env'
