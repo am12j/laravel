@@ -24,7 +24,21 @@ pipeline {
 
                 sh 'docker rm check-container || true'
 
-                sh 'docker run -d --name check-container -p 5001:80 -e APP_KEY=base64:jW9uLzN4QkZ5M1c4bDRzN3A2eDlvMnZhNWRlZg== -e SESSION_DRIVER=cookie -e CACHE_STORE=file -e QUEUE_CONNECTION=sync mdamankhan/check'
+                // 1. Run the container
+                sh 'docker run -d --name check-container -p 5001:80 mdamankhan/check'
+
+                // 2. Create the .env file inside the container
+                sh 'docker exec check-container cp .env.example .env'
+
+                // 3. Configure the settings inside the .env file
+                sh 'docker exec check-container sed -i "s/APP_KEY=/APP_KEY=base64:jW9uLzN4QkZ5M1c4bDRzN3A2eDlvMnZhNWRlZg==/g" .env'
+                sh 'docker exec check-container sed -i "s/SESSION_DRIVER=database/SESSION_DRIVER=cookie/g" .env'
+                sh 'docker exec check-container sed -i "s/CACHE_STORE=database/CACHE_STORE=file/g" .env'
+                sh 'docker exec check-container sed -i "s/QUEUE_CONNECTION=database/QUEUE_CONNECTION=sync/g" .env'
+
+                // 4. Clear any cached configuration
+                sh 'docker exec check-container php artisan config:clear || true'
+                sh 'docker exec check-container php artisan optimize:clear || true'
 
             }
 
