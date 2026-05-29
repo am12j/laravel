@@ -125,7 +125,7 @@ class firstcontroller extends Controller
         $answer = $result['candidates'][0]['content']['parts'][0]['text'];
         
 
-
+    
         return view('dashboard', compact('message', 'answer'));
 
     }
