@@ -34,7 +34,12 @@ class firstcontroller extends Controller
         }
     }
     public function complaintsubmit(Request $request)
-    {
+    {   
+        $exists = Complain::where('email', $request->email)->exists();
+
+        if ($exists) {
+            return "Complaint with this email already exists";
+        }
         complain::create($request->all());
 
         return "Complaint Submitted Successfully";
