@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class firstcontroller extends Controller
 {
      public function signup(Request $request)
-    {
+    {   
+        $exists = User::where('username', $request->username)->exists();
+
+        if ($exists) {
+             return "Username already exists";
+        }
         User::create($request->all());
 
         return "User Registered Successfully";
